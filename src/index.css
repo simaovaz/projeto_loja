@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.signin.active{
+  display: none;
+}
+
+
+.login {
+  display: none;
+}
+
+.login.active {
+  display: inline-block;
+}
