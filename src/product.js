@@ -8,6 +8,7 @@ const Product = (props) => {
     const [cart, changeCart] = useState([]);
     const idParams = props.match.params.id;
     const [id, setID] = useState("");
+    const [buyingState, changeBuyingState] = useState(false);
 
 
 
@@ -33,33 +34,48 @@ const Product = (props) => {
         //console.log(cart);
     }, [id]);
 
-  
 
+    var flag = 0;
+    let warning;
     const shop = (e) => {
         e.preventDefault();
-        const newCart = [...cart, state[0]];
-        console.log(newCart);
-
-        axios.patch(`http://localhost:3000/store-users/${id}`, {
-            cart: newCart
-        }).then(res => {
-            
+        
+        cart.forEach(item => {
+            if (item.id == idParams) {
+                flag = 1;
+                console.log("produtos iguais");
+                warning= <p>produto já no carrinho </p>
+            }
         })
+        if (flag === 0) {
+            changeBuyingState(true);
+            const newCart = [...cart, state[0]];
+            console.log(newCart);
+            axios.patch(`http://localhost:3000/store-users/${id}`, {
+                cart: newCart
+            }).then(res => {
+
+            })
+        }
+
 
         //console.log(cart);
     }
+    
 
     if (state.length <= 0) {
         return "Loading... "
     }
     else {
-        
+
         return (
             <div>
+                {warning}
                 <img width="300px" height="400px" src={state[0].image}></img>
                 <p> {state[0].title}</p>
                 <p> <strong> {state[0].price} </strong></p>
                 <button onClick={shop}> Adicionar ao carrinho </button>
+                
             </div>
         )
     }

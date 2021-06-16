@@ -1,7 +1,7 @@
 .Navbar{
-    height: 60px;
+    height: 80px;
     width: 100%;
-    background-color: aqua;
+    background-color: black;
     box-sizing: border-box;
     margin: 0;
 }
@@ -11,17 +11,38 @@
     list-style: none;
     padding:10px;
     border:1px solid transparent;
+    width: 100px;
+    height: 30px;
 }
 
 .Navbar ul li a{
-    color:black;
+    color:white;
     text-decoration: none;
+    letter-spacing: 5px;
+    position: relative;
 }
 
-.Navbar ul li:hover{
-    border: 1px solid black;
-    border-radius: 5px;
+.Navbar ul li a::after{
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width:0;
+    left: 0;
+    bottom: 0px;
+    transition: 0.5s;
 }
+.Navbar ul li a:hover::after{
+    
+    width:100%;
+}
+
+.Navbar ul li.cenas{
+    display: flex;
+    justify-content: center;
+}
+
+
 
 .Navbar ul{
     height: 100%;

@@ -115,7 +115,7 @@ function Signin(props) {
     if (localStorage.getItem('our_token')) {
         cenas = (
 
-            <div>
+            <div style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <p>já estás logado! Bem-vindo {temp.username} ! </p>
                 <button onClick={logout}> Log out</button>
             </div>
@@ -126,7 +126,7 @@ function Signin(props) {
         cenas = (
 
             <div>
-                <div className="signin">
+                <div className="signin" style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <form onSubmit={registar}>
                         <div>
                             <label> Username</label>
@@ -141,8 +141,8 @@ function Signin(props) {
                             <input type="password" onChange={mudarPass} />
                         </div>
                         <button type="submit" > Registar </button>
+                        <p> Já registado? É só fazer <button onClick={tog} > login </button></p>
                     </form>
-                    <p> Já registado? É só fazer <button onClick={tog} > login </button></p>
                 </div>
                 <div className="login">
                     <form onSubmit={login}>

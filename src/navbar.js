@@ -36,7 +36,7 @@ const Navbar = () => {
                 
                 <li class="cenas"> <Link to="/"> Home </Link></li>
                 <li class="cenas"> <Link to="/products"> Products </Link></li>
-                <li class="cenas"> <Link to="/signin"> <FontAwesomeIcon icon="user" /></Link></li>
+                <li class="cenas"> <Link to="/signin"> <FontAwesomeIcon style={{fontSize: "20px"}} icon="user" /></Link></li>
                 <li class="cenas"> <Link to="/shopping-cart"> Cart </Link></li>
 
             </ul>
