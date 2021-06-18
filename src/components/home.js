@@ -15,10 +15,12 @@ function Home(props) {
     }, [])
 
     if(state){
-        return <p> olá {state}</p>
+        return <div className="main-container">
+            <p> Hello {state}!</p>
+            </div>
     }
     else{
-        return <p> nada para ver </p>
+        return <div className="main-container"> <p> Nothing to see </p> </div>
     }
     
 }

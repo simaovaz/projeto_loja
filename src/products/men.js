@@ -35,7 +35,7 @@ const Men = () => {
                         <p> {item.id} </p>
                         <p> {item.title} </p>
                         <img width="200px" height="250px" src={src}></img>
-                        <Link to={link}> <button> Ver produto </button></Link>
+                        <Link to={link}> <button> See product </button></Link>
                     </div>
                 )
             })}</div>

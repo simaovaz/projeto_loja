@@ -51,7 +51,7 @@ const ShoppingCart = () => {
     if (state.length > 0) {
 
         return (
-            <div>
+            <div className="main-container">
                 <button> <Link to={{
                     pathname: "/order",
                     state: {
@@ -86,7 +86,7 @@ const ShoppingCart = () => {
         )
     } else {
         return (
-            <div style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <div className="main-container">
                 <p> Your shopping cart is empty! </p>
             </div>
 

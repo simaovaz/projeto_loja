@@ -22,16 +22,12 @@ const Product = (props) => {
             setID(res.data.id);
             if (id) {
                 axios.get(`http://localhost:3000/store-users/${id}`).then(res => {
-                    //console.log(res);
                     res.data.cart.forEach(item => {
                         changeCart((old) => [...old, item])
                     })
                 })
             }
         })
-
-
-        //console.log(cart);
     }, [id]);
 
 
@@ -39,12 +35,12 @@ const Product = (props) => {
     let warning;
     const shop = (e) => {
         e.preventDefault();
-        
+
         cart.forEach(item => {
             if (item.id == idParams) {
                 flag = 1;
                 console.log("produtos iguais");
-                warning= <p>produto já no carrinho </p>
+                warning = <p>produto já no carrinho </p>
             }
         })
         if (flag === 0) {
@@ -61,7 +57,7 @@ const Product = (props) => {
 
         //console.log(cart);
     }
-    
+
 
     if (state.length <= 0) {
         return "Loading... "
@@ -69,13 +65,24 @@ const Product = (props) => {
     else {
 
         return (
-            <div>
-                {warning}
-                <img width="300px" height="400px" src={state[0].image}></img>
-                <p> {state[0].title}</p>
-                <p> <strong> {state[0].price} </strong></p>
-                <button onClick={shop}> Adicionar ao carrinho </button>
-                
+            <div className="main-container">
+
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div>
+                        <img width="300px" height="400px" src={state[0].image}></img>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center" , paddingLeft: "50px"}}>
+                        <div>
+                            {warning}
+
+                            <p> {state[0].title}</p>
+                            <p> <strong> {state[0].price} € </strong></p>
+                            <button onClick={shop}> Add to cart </button>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         )
     }

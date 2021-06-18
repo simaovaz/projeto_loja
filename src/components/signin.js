@@ -2,8 +2,8 @@ import '../index.css';
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import cenas from '../cena';
-import Login from "./login";
+import Form from "./form";
+import LoginForm from "./login-form";
 
 function Signin(props) {
 
@@ -66,10 +66,7 @@ function Signin(props) {
         }).catch(err => {
             console.log(err);
         })
-
-
     }
-
 
     const logout = () => {
         localStorage.clear();
@@ -106,80 +103,27 @@ function Signin(props) {
         }).catch(err => {
             console.log(err);
         })
-
-
     }
 
-    let config = {
-        headers: {
-            "x-rapidapi-key": "76133ee690msh8872767cea37df4p1e7cb5jsnad3454700223",
-            "x-rapidapi-host": "amazon-product-reviews-keywords.p.rapidapi.com",
-            "useQueryString": true
-        }
-    }
-
-    const one = (e) => {
-        e.preventDefault();
-        axios.get("https://amazon-product-reviews-keywords.p.rapidapi.com/product/search?keyword=iphone&country=US&category=aps", config).then(res => {
-            console.log(res);
-        })
-    }
-
-    let cenas;
+    let view;
     if (localStorage.getItem('our_token')) {
-        cenas = (
-
-            <div style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <p>já estás logado! Bem-vindo {temp.username} ! </p>
+        view = (
+            <div className="main-container">
+                <p> You're logged in! Welcome {temp.username}! </p> 
                 <button onClick={logout}> Log out</button>
             </div>
         )
     }
     else {
-
-        cenas = (
-
-            <div className="Rei">
-                <div className="Signin" >
-                    <form onSubmit={registar}>
-                        <div>
-                            <label> Username</label>
-                            <input type="text" onChange={mudarUser} />
-                        </div>
-                        <div>
-                            <label> Email</label>
-                            <input type="email" onChange={mudarEmail} />
-                        </div>
-                        <div>
-                            <label> Password</label>
-                            <input type="password" onChange={mudarPass} />
-                        </div>
-                        <button type="submit" > Registar </button>
-                        <p> Já registado? É só fazer <button onClick={tog} > login </button></p>
-                    </form>
-                </div>
-                <div className="login">
-                    <form onSubmit={login}>
-                        <div>
-                            <label> Username </label>
-                            <input type="text" onChange={mudarUser}></input>
-                        </div>
-                        <div>
-                            <label> Password </label>
-                            <input type="password" onChange={mudarPass}></input>
-                        </div>
-                        <button type="submit"> Login </button>
-                    </form>
-                    <p> Não tens conta ainda? regista-te <button onClick={tog2}> aqui !</button></p>
-                </div>
-                <button onClick={one}> Oneeeeee</button>
+        view = (
+            <div className="main-container">
+                <Form tog={tog} registar={registar} mudarUser={mudarUser} mudarEmail={mudarEmail} mudarPass={mudarPass}></Form>
+                <LoginForm mudarUser={mudarUser} mudarPass={mudarPass} login={login} tog2={tog2}></LoginForm>
             </div>
-
-
         );
     }
 
-    return cenas;
+    return view;
 }
 
 const mapsStateToProps = state => {

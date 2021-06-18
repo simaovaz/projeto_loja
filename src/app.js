@@ -1,12 +1,11 @@
 import React from "react";
-import App from "./components/signin";
 import Navbar from "./navbar";
 
-const cenas = ()=>{
+const App = ()=>{
     
     return (
         <Navbar />
     )
 }
 
-export default cenas;
+export default App;

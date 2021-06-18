@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/signin';
 import reportWebVitals from './reportWebVitals';
-import Cenas from "./cena";
+import App from "./app";
 
 import reducer from "./reducer";
 import { Provider } from "react-redux";
@@ -16,7 +15,7 @@ const store = createStore(reducer);
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-        <Cenas />
+        <App />
     </Provider>
   </BrowserRouter>,
   document.getElementById('root')

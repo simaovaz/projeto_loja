@@ -66,7 +66,7 @@ const Order = (props) => {
     }
     if (!buyingState) {
         return (
-            <div>
+            <div className="main-container">
                 <form>
                     <div>
                         <label> Name </label>
@@ -94,9 +94,10 @@ const Order = (props) => {
             </div>
 
         )
-    }else{
-        return <div>
-            <p> Compra efetuada com sucesso! </p>
+    } else {
+        return <div className="main-container">
+            <div> Your order has been submitted! </div>
+            <div> The tracking number is {newOrder.id} </div>
         </div>
     }
 
