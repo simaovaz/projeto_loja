@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './signin';
+import App from './components/signin';
 import reportWebVitals from './reportWebVitals';
 import Cenas from "./cena";
 

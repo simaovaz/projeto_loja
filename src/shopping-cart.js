@@ -15,10 +15,10 @@ const ShoppingCart = () => {
     useEffect(() => {
         axios.post("http://localhost:3000/store-users/retorna", { token: localStorage.getItem('our_token') }).then(res => {
             setID(res.data.id);
-
         })
         if (id) {
             axios.get(`http://localhost:3000/store-users/${id}`).then(res => {
+
                 if (res.data.cart.length > 0) {
                     res.data.cart.forEach(item => {
                         changeState((old) => [...old, item]);
@@ -36,6 +36,18 @@ const ShoppingCart = () => {
 
     }, [id])
 
+    const addProduct = (funcId) =>{
+        /*
+        state.forEach( item =>{
+            if(item.id==funcId){
+                changeState( old=> [...old, item ]);
+            }
+        })
+        */
+       len++
+    }
+    let len= 1;
+
     if (state.length > 0) {
 
         return (
@@ -51,6 +63,7 @@ const ShoppingCart = () => {
                     },
                 }}> Finalize order  </Link> </button>
                 {state.map(item => {
+                    
                     return (
                         <div key={item.id} style={{ width: "50%", display: "flex", flexDirection: "row", marginLeft: "100px", marginBottom: "20px"}}>
                             <div>
@@ -58,9 +71,9 @@ const ShoppingCart = () => {
                             </div>
                             <div style={{ display: "flex", alignItems: "center", marginLeft: "100px" }}>
                                 <div>
-                                    <span> quantidade : 1 <button> + </button> <button> - </button></span>
+                                    <span> Amount : {len} <button onClick={() => addProduct(item.id)}> + </button> <button > - </button></span>
                                     <p> {item.title} </p>
-                                    <p> {item.price} </p>
+                                    <p> Price: {item.price} € </p>
                                 </div>
                             </div>
                         </div>
@@ -73,8 +86,8 @@ const ShoppingCart = () => {
         )
     } else {
         return (
-            <div>
-                <p> O teu carrinho está vazio </p>
+            <div style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <p> Your shopping cart is empty! </p>
             </div>
 
         )

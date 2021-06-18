@@ -2,9 +2,16 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+div div.Signin{
+  width: "100%";
+  height: "40vw";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center"
+}
 
 
-.signin.active{
+.Signin.active{
   display: none;
 }
 
@@ -15,4 +22,9 @@ body {
 
 .login.active {
   display: inline-block;
+  width: "100%";
+  height: "40vw";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center"
 }

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect} from "react";
-import Order from "./order";
 
 
 const Checkout = () => {
@@ -43,7 +42,7 @@ const Checkout = () => {
                         </div>
                     )
                 })}
-                <p> Total {total.toFixed(2)}</p>
+                <p> Total: {total.toFixed(2)} €</p>
             </div>
             <button> <Link to={{
                 pathname: "/order",

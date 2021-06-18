@@ -3,16 +3,17 @@ import './navbar.css';
 import { Route, Switch, Link } from "react-router-dom";
 import Home from "./home";
 import Products from "./products";
-import Login from "./login";
-//import Contacts from "./contacts";
-//import ShoppingCart from "./shoppingCart";
-import SignIn from "./signin";
+import Login from "./components/login";
+import SignIn from "./components/signin";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ShoppingCart from "./shopping-cart";
-import Checkout from "./checkout";
-import Order from "./order";
+import Checkout from "./components/checkout";
+import Order from "./components/order";
+import Men from "./products/men";
+import Women from "./products/women";
+import Accessories from "./products/accessories";
 
 import Product from "./product";
 
@@ -22,10 +23,23 @@ const Navbar = () => {
 
     const toggle = () => {
         const btn = document.getElementsByClassName('cenas');
-        for(let i=0; i<btn.length; i++){
+        for (let i = 0; i < btn.length; i++) {
             btn[i].classList.toggle('active');
         }
-        
+    }
+
+
+    const hidden = document.getElementsByClassName('hidden');
+    const tok = () => {
+        for (let i = 0; i < hidden.length; i++) {
+            hidden[i].classList.toggle('active');
+        }
+    }
+
+    const leave = () => {
+        for (let i = 0; i < hidden.length; i++) {
+            hidden[i].classList.toggle('active');
+        }
     }
 
     return (
@@ -33,10 +47,16 @@ const Navbar = () => {
         <div className="Navbar">
             <button class="btn" onClick={toggle}> toggle</button>
             <ul>
-                
-                <li class="cenas"> <Link to="/"> Home </Link></li>
-                <li class="cenas"> <Link to="/products"> Products </Link></li>
-                <li class="cenas"> <Link to="/signin"> <FontAwesomeIcon style={{fontSize: "20px"}} icon="user" /></Link></li>
+                <li class="cenas"> <Link to="/"> Home </Link>
+
+                </li>
+                <li class="cenas"> <a onMouseOver={tok}> Products </a>
+                    <ul onMouseLeave={leave}>
+                        <li className="hidden" style={{ color: "white" }}> <Link to="/men"> Men </Link></li>
+                        <li className="hidden" style={{ color: "white" }}> <Link to="/women"> Women </Link></li>
+                        <li className="hidden" style={{ color: "white" }}> <Link to="/accessories"> Accessories </Link></li>
+                    </ul></li>
+                <li class="cenas" > <Link id="icon" to="/signin"> <FontAwesomeIcon style={{ fontSize: "20px" }} icon="user" /></Link></li>
                 <li class="cenas"> <Link to="/shopping-cart"> Cart </Link></li>
 
             </ul>
@@ -46,6 +66,9 @@ const Navbar = () => {
                 <Route path="/signin" component={SignIn} />
                 <Route path="/shopping-cart" component={ShoppingCart} />
                 <Route path="/checkout" component={Checkout} />
+                <Route path="/men" component={Men} />
+                <Route path="/women" component={Women} />
+                <Route path="/accessories" component={Accessories} />
                 <Route path="/order" component={Order} />
                 <Route path="/:id" component={Product} />
             </Switch>

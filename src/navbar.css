@@ -9,6 +9,7 @@
 
 .Navbar ul li{
     list-style: none;
+    position: relative;
     padding:10px;
     border:1px solid transparent;
     width: 100px;
@@ -26,11 +27,15 @@
     content: "";
     position: absolute;
     background-color: white;
-    height: 3px;
+    height: 2px;
     width:0;
     left: 0;
-    bottom: 0px;
+    bottom: 8px;
     transition: 0.5s;
+}
+
+.Navbar ul li.cenas a#icon:hover::after{
+    display: none;
 }
 .Navbar ul li a:hover::after{
     
@@ -88,3 +93,38 @@ body{
 
     
 }
+
+div.Navbar ul li ul{
+    
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -40px;
+    bottom: -70px;
+    letter-spacing: 3px;
+    
+}
+div.Navbar ul li ul li.hidden{
+    display: none;
+}
+
+ul li.hidden.active a::after{
+    bottom: -4px;
+}
+
+div.Navbar ul li ul li.hidden.active{
+    
+    display: flex;
+    background-color:black ;
+    width: 200px;
+}
+
+
+div.Navbar ul li ul.hidden li{
+    background-color: black;
+}
+
+div.Navbar ul li ul.hidden li a{
+    color: white;
+}
+

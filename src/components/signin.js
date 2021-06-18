@@ -1,10 +1,9 @@
-import './App.css';
+import '../index.css';
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import cenas from './cena';
+import cenas from '../cena';
 import Login from "./login";
-
 
 function Signin(props) {
 
@@ -19,9 +18,9 @@ function Signin(props) {
 
     useEffect(() => {
 
-        axios.post("http://localhost:3000/store-users/retorna", { token: localStorage.getItem('our_token')}).then( res =>{
+        axios.post("http://localhost:3000/store-users/retorna", { token: localStorage.getItem('our_token') }).then(res => {
             console.log(res);
-            changeState( {...temp, username: res.data.username})
+            changeState({ ...temp, username: res.data.username })
         })
         /*
         axios.post('http://localhost:3000/store-users/cenas', { token: localStorage.getItem('our_token') }).then(res => {
@@ -29,7 +28,7 @@ function Signin(props) {
         })
         */
     }, [flag]);
-    
+
 
     const mudarUser = (e) => {
         e.preventDefault();
@@ -70,7 +69,7 @@ function Signin(props) {
 
 
     }
-    
+
 
     const logout = () => {
         localStorage.clear();
@@ -78,16 +77,16 @@ function Signin(props) {
     }
 
     const tog = () => {
-        const signin = document.getElementsByClassName('signin')[0];
+        const signin = document.getElementsByClassName('Signin')[0];
         signin.classList.toggle('active');
         const login = document.getElementsByClassName('login')[0];
         login.classList.toggle('active');
     }
 
-    const tog2 = () =>{
+    const tog2 = () => {
         const login = document.getElementsByClassName('login')[0];
         login.classList.toggle('active');
-        const signin = document.getElementsByClassName('signin')[0];
+        const signin = document.getElementsByClassName('Signin')[0];
         signin.classList.toggle('active');
     }
 
@@ -111,11 +110,26 @@ function Signin(props) {
 
     }
 
+    let config = {
+        headers: {
+            "x-rapidapi-key": "76133ee690msh8872767cea37df4p1e7cb5jsnad3454700223",
+            "x-rapidapi-host": "amazon-product-reviews-keywords.p.rapidapi.com",
+            "useQueryString": true
+        }
+    }
+
+    const one = (e) => {
+        e.preventDefault();
+        axios.get("https://amazon-product-reviews-keywords.p.rapidapi.com/product/search?keyword=iphone&country=US&category=aps", config).then(res => {
+            console.log(res);
+        })
+    }
+
     let cenas;
     if (localStorage.getItem('our_token')) {
         cenas = (
 
-            <div style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <div style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <p>já estás logado! Bem-vindo {temp.username} ! </p>
                 <button onClick={logout}> Log out</button>
             </div>
@@ -125,8 +139,8 @@ function Signin(props) {
 
         cenas = (
 
-            <div>
-                <div className="signin" style={{ width: "100%", height: "40vw", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <div className="Rei">
+                <div className="Signin" >
                     <form onSubmit={registar}>
                         <div>
                             <label> Username</label>
@@ -158,7 +172,7 @@ function Signin(props) {
                     </form>
                     <p> Não tens conta ainda? regista-te <button onClick={tog2}> aqui !</button></p>
                 </div>
-                
+                <button onClick={one}> Oneeeeee</button>
             </div>
 
 
