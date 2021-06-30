@@ -1,7 +1,12 @@
 .Products{
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: left;
+    background-color: lightgray;
 }
+
+
 
 .Product{
     background-color: salmon;

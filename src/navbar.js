@@ -13,6 +13,9 @@ import Order from "./components/order";
 import Men from "./products/men";
 import Women from "./products/women";
 import Accessories from "./products/accessories";
+import Orders from "./components/orders";
+import Settings from "./components/settings";
+
 
 import Product from "./product";
 
@@ -70,6 +73,8 @@ const Navbar = () => {
                 <Route path="/women" component={Women} />
                 <Route path="/accessories" component={Accessories} />
                 <Route path="/order" component={Order} />
+                <Route path="/orders" component={Orders} />
+                <Route path="/settings" component={Settings} />
                 <Route path="/:id" component={Product} />
             </Switch>
         </div>

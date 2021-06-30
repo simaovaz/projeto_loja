@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
+
 const ShoppingCart = () => {
 
     const [state, changeState] = useState([]);
@@ -26,9 +27,9 @@ const ShoppingCart = () => {
                     })
                 }
                 if (res.data.orders.length > 0) {
-                    res.data.orders.forEach( order => {
+                    res.data.orders.forEach(order => {
                         changeOrders((old) => [...old, order]);
-                        
+
                     })
                 }
             })
@@ -36,7 +37,7 @@ const ShoppingCart = () => {
 
     }, [id])
 
-    const addProduct = (funcId) =>{
+    const addProduct = (funcId) => {
         /*
         state.forEach( item =>{
             if(item.id==funcId){
@@ -44,41 +45,46 @@ const ShoppingCart = () => {
             }
         })
         */
-       len++
+        len++
     }
-    let len= 1;
+    let len = 1;
 
     if (state.length > 0) {
 
         return (
-            <div className="main-container">
-                <button> <Link to={{
-                    pathname: "/order",
-                    state: {
-                        cart: state,
-                        id: id,
-                        total: total,
-                        orders: orders
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div className="cenas">
 
-                    },
-                }}> Finalize order  </Link> </button>
-                {state.map(item => {
-                    
-                    return (
-                        <div key={item.id} style={{ width: "50%", display: "flex", flexDirection: "row", marginLeft: "100px", marginBottom: "20px"}}>
-                            <div>
-                                <img alt="product" src={item.image} width="200px" height="300px" />
-                            </div>
-                            <div style={{ display: "flex", alignItems: "center", marginLeft: "100px" }}>
+                    {state.map(item => {
+
+                        return (
+                            <div key={item.id} style={{ display: "flex", flexDirection: "row", alignItems: "center"}}>
+                                <div>
+                                    <img alt="product" src={item.image} width="200px" height="300px" />
+                                </div>
+
                                 <div>
                                     <span> Amount : {len} <button onClick={() => addProduct(item.id)}> + </button> <button > - </button></span>
                                     <p> {item.title} </p>
                                     <p> Price: {item.price} € </p>
                                 </div>
+
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
+                <div>
+                    <button> <Link to={{
+                        pathname: "/order",
+                        state: {
+                            cart: state,
+                            id: id,
+                            total: total,
+                            orders: orders
+
+                        },
+                    }}> Finalize order  </Link> </button>
+                </div>
 
             </div>
 
@@ -86,8 +92,10 @@ const ShoppingCart = () => {
         )
     } else {
         return (
-            <div className="main-container">
-                <p> Your shopping cart is empty! </p>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div className="main-container">
+                    <p> Your shopping cart is empty! </p>
+                </div>
             </div>
 
         )

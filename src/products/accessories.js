@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import ProductTemplate from "./product-template";
 
-const Accessories = () =>{
+const Accessories = () => {
     const [state, changeState] = useState([]);
     const [products, changeProducts] = useState([]);
 
@@ -23,20 +23,17 @@ const Accessories = () =>{
 
 
     if (state) {
-        return <div className="Products">
-            {state.map(item => {
-                const link = `/${item.id}`
-                const src = `${item.image}`;
-                return (
-                    <div key={item.id}>
-
-                        <p> {item.id} </p>
-                        
-                        <img width="200px" height="250px" src={src}></img>
-                        <Link to={link}> <button> See product </button></Link>
-                    </div>
-                )
-            })}</div>
+        return (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div className="Products">
+                    {state.map(item => {
+                        return (
+                            <ProductTemplate price={item.price} id={item.id} title={item.title} image={item.image}></ProductTemplate>
+                        )
+                    })}
+                </div>
+            </div>
+        )
     }
     else {
         return (

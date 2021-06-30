@@ -54,7 +54,8 @@ const Order = (props) => {
         axios.post('http://localhost:3000/store-users-orders', {
             user_id: id,
             username: "rei delas",
-            products: newOrder.products
+            products: newOrder.products,
+            price: newOrder.total
         }).then(res => {
             console.log(typeof res.data.order._id)
             changeNewOrder({ ...newOrder, id: res.data.order._id });
@@ -95,10 +96,14 @@ const Order = (props) => {
 
         )
     } else {
-        return <div className="main-container">
-            <div> Your order has been submitted! </div>
-            <div> The tracking number is {newOrder.id} </div>
-        </div>
+        return (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div className="main-container">
+                    <div> Your order has been submitted! </div>
+                    <div> The tracking number is {newOrder.id} </div>
+                </div>
+            </div>
+        )
     }
 
 }

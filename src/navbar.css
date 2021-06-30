@@ -28,9 +28,9 @@
     position: absolute;
     background-color: white;
     height: 2px;
-    width:0;
+    width: 0;
     left: 0;
-    bottom: 8px;
+    bottom: -5px;
     transition: 0.5s;
 }
 
@@ -99,6 +99,7 @@ div.Navbar ul li ul{
     display: flex;
     flex-direction: column;
     position: absolute;
+    z-index: 2;
     left: -40px;
     bottom: -70px;
     letter-spacing: 3px;

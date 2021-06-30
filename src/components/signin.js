@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Form from "./form";
 import LoginForm from "./login-form";
+import { Link } from "react-router-dom";
 
 function Signin(props) {
 
@@ -105,13 +106,38 @@ function Signin(props) {
         })
     }
 
+    const darken= (number) =>{
+        const items = document.getElementsByClassName('some');
+        for(let i=0; i<items.length; i++){
+            if(i==number){
+                items[i].classList.toggle('active');
+            }
+        }
+    }
+
     let view;
     if (localStorage.getItem('our_token')) {
         view = (
-            <div className="main-container">
-                <p> You're logged in! Welcome {temp.username}! </p> 
-                <button onClick={logout}> Log out</button>
+            <div style={{ display: "flex", flexDirection: "row", marginTop: "50px"}}>
+
+                <div>
+
+                    <ul style={{ display: "flex", flexDirection: "column" }}>
+                    <li class="some" > <Link to="/signin" style={{ color: "white", backgroundColor: "black", padding: "5px"}}> Profile </Link>   </li>
+                        <li class="some"> <Link to="/orders" style={{color: "black"}}> Orders </Link></li>
+                        <li class="some" > <Link to="/settings" style={{ color: "black" }}> Settings </Link> </li>
+
+                    </ul>
+                </div>
+                <div style={{ width: "50%"}}>
+                    <p> You're logged in! Welcome {temp.username}! </p>
+                </div>
+
+
+                <div><button onClick={logout}> Log out</button> </div>
+
             </div>
+
         )
     }
     else {
