@@ -106,10 +106,10 @@ function Signin(props) {
         })
     }
 
-    const darken= (number) =>{
+    const darken = (number) => {
         const items = document.getElementsByClassName('some');
-        for(let i=0; i<items.length; i++){
-            if(i==number){
+        for (let i = 0; i < items.length; i++) {
+            if (i == number) {
                 items[i].classList.toggle('active');
             }
         }
@@ -118,18 +118,18 @@ function Signin(props) {
     let view;
     if (localStorage.getItem('our_token')) {
         view = (
-            <div style={{ display: "flex", flexDirection: "row", marginTop: "50px"}}>
+            <div style={{ display: "flex", flexDirection: "row", marginTop: "50px" }}>
 
                 <div>
 
                     <ul style={{ display: "flex", flexDirection: "column" }}>
-                    <li class="some" > <Link to="/signin" style={{ color: "white", backgroundColor: "black", padding: "5px"}}> Profile </Link>   </li>
-                        <li class="some"> <Link to="/orders" style={{color: "black"}}> Orders </Link></li>
+                        <li class="some" > <Link to="/signin" style={{ color: "white", backgroundColor: "black", padding: "5px" }}> Profile </Link>   </li>
+                        <li class="some"> <Link to="/orders" style={{ color: "black" }}> Orders </Link></li>
                         <li class="some" > <Link to="/settings" style={{ color: "black" }}> Settings </Link> </li>
 
                     </ul>
                 </div>
-                <div style={{ width: "50%"}}>
+                <div style={{ width: "50%" }}>
                     <p> You're logged in! Welcome {temp.username}! </p>
                 </div>
 
@@ -142,9 +142,21 @@ function Signin(props) {
     }
     else {
         view = (
-            <div className="main-container">
-                <Form tog={tog} registar={registar} mudarUser={mudarUser} mudarEmail={mudarEmail} mudarPass={mudarPass}></Form>
-                <LoginForm mudarUser={mudarUser} mudarPass={mudarPass} login={login} tog2={tog2}></LoginForm>
+            <div style={{ display: "flex", flexDirection: "row", marginTop: "50px" }}>
+
+                <div>
+
+                    <ul style={{ display: "flex", flexDirection: "column" }}>
+                        <li class="some" > <Link to="/signin" style={{ color: "white", backgroundColor: "black", padding: "5px" }}> Profile </Link>   </li>
+                        <li class="some"> <Link to="/orders" style={{ color: "black" }}> Orders </Link></li>
+                        <li class="some" > <Link to="/settings" style={{ color: "black" }}> Settings </Link> </li>
+
+                    </ul>
+                </div>
+                <div>
+                    <Form tog={tog} registar={registar} mudarUser={mudarUser} mudarEmail={mudarEmail} mudarPass={mudarPass}></Form>
+                    <LoginForm mudarUser={mudarUser} mudarPass={mudarPass} login={login} tog2={tog2}></LoginForm>
+                </div>
             </div>
         );
     }

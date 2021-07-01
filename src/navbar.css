@@ -39,7 +39,12 @@
 }
 .Navbar ul li a:hover::after{
     
-    width:100%;
+    width:95%;
+}
+
+.Navbar ul li#special a:hover::after{
+    
+    width:55%;
 }
 
 .Navbar ul li.cenas{

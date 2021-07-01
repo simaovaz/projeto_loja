@@ -9,6 +9,7 @@ const ShoppingCart = () => {
     const [state, changeState] = useState([]);
     const [orders, changeOrders] = useState([]);
     const [id, setID] = useState("");
+    const [number, changeNumber] = useState(1);
     const [total, changeTotal] = useState(0);
 
 
@@ -37,7 +38,23 @@ const ShoppingCart = () => {
 
     }, [id])
 
+    const deleteItem = (ID)=>{
+        const oldCart= state;
+        const newCart= oldCart.filter( item=> item.id != ID);
+        console.log(id);
+        changeState(newCart);
+        axios.patch(`http://localhost:3000/store-users/${id}`,{
+            cart: newCart
+        }).then(res=>{
+            console.log(res)
+        })
+    }
+
     const addProduct = (funcId) => {
+        const oldState = state;
+        const newState = oldState.concat(oldState.filter( item=> item.id== funcId ));
+        console.log(newState);
+        changeNumber((old)=> old+1)
         /*
         state.forEach( item =>{
             if(item.id==funcId){
@@ -45,14 +62,12 @@ const ShoppingCart = () => {
             }
         })
         */
-        len++
     }
-    let len = 1;
 
     if (state.length > 0) {
 
         return (
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "row" }}>
                 <div className="cenas">
 
                     {state.map(item => {
@@ -64,16 +79,17 @@ const ShoppingCart = () => {
                                 </div>
 
                                 <div>
-                                    <span> Amount : {len} <button onClick={() => addProduct(item.id)}> + </button> <button > - </button></span>
+                                    <span> Amount : {number} <button onClick={() => addProduct(item.id)}> + </button> <button > - </button></span>
                                     <p> {item.title} </p>
                                     <p> Price: {item.price} € </p>
+                                    <button onClick={()=>deleteItem(item.id)}> Remove from cart </button>
                                 </div>
 
                             </div>
                         )
                     })}
                 </div>
-                <div>
+                <div style={{display:"flex", alignItems: "center"}}>
                     <button> <Link to={{
                         pathname: "/order",
                         state: {

@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="Navbar">
             <button class="btn" onClick={toggle}> toggle</button>
             <ul>
-                <li class="cenas"> <Link to="/"> Home </Link>
+                <li class="cenas" id="special"> <Link to="/"> Home </Link>
 
                 </li>
                 <li class="cenas"> <a onClick={tok}> Products </a>
