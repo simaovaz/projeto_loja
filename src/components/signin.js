@@ -144,7 +144,7 @@ function Signin(props) {
         view = (
             <div style={{ display: "flex", flexDirection: "row", marginTop: "50px" }}>
 
-                <div>
+                <div style={{position: "absolute", bottom:"20px"}}>
 
                     <ul style={{ display: "flex", flexDirection: "column" }}>
                         <li class="some" > <Link to="/signin" style={{ color: "white", backgroundColor: "black", padding: "5px" }}> Profile </Link>   </li>

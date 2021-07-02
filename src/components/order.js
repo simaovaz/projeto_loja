@@ -33,7 +33,7 @@ const Order = (props) => {
     }, []);
 
     useEffect(() => {
-        console.log(buyingState);
+        console.log(cart);
         if (buyingState === true) {
             //console.log(newOrder);
 
@@ -50,7 +50,7 @@ const Order = (props) => {
 
     const orderForm = (e) => {
         e.preventDefault();
-
+        console.log(newOrder.products)
         axios.post('http://localhost:3000/store-users-orders', {
             user_id: id,
             username: "rei delas",
@@ -81,8 +81,9 @@ const Order = (props) => {
                         <label> order </label>
                         {cart.map(item => {
                             return (
-                                <div key={item.id}>
+                                <div key={item.id+Math.random()*123423}>
                                     <p> item: {item.title} </p>
+                                    <p> amount: {item.amount} </p>
                                     <p> preço: {item.price} € </p>
 
                                 </div>

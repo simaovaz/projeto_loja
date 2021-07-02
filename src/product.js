@@ -19,7 +19,9 @@ const Product = (props) => {
     useEffect(() => {
         axios.get(`https://fakestoreapi.com/products/${idParams}`).then(data => {
             let temp = data.data;
+            temp.amount= 1;
             changeState(old => [...old, temp])
+            
         })
 
         axios.post("http://localhost:3000/store-users/retorna", { token: localStorage.getItem('our_token') }).then(res => {
@@ -38,6 +40,7 @@ const Product = (props) => {
     var flag = 0;
     const shop = (e) => {
         e.preventDefault();
+        console.log(state);
         const icon = document.getElementsByClassName('check-icon')[0];
         cart.forEach(item => {
             if (item.id == idParams) {
